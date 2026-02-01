@@ -42,7 +42,7 @@ public class ShortUrl {
     private void checkExpiration() {
         boolean notExpiredByTime = LocalDateTime.now().isBefore(expiresAt);
         boolean notExpiredByClicks = clickCount < maxClicks;
-        active = notExpiredByTime && notExpiredByClicks;
+        this.active = notExpiredByTime && notExpiredByClicks;
     }
 
     public boolean isActive() {

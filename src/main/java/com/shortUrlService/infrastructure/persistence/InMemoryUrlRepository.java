@@ -33,4 +33,16 @@ public class InMemoryUrlRepository {
         byShortCode.values().removeIf(url -> !url.isActive());
         byUserId.values().forEach(list -> list.removeIf(url -> !url.isActive()));
     }
+
+    public boolean removeByShortCode(String shortCode) {
+        ShortUrl removed = byShortCode.remove(shortCode);
+        if (removed != null) {
+            List<ShortUrl> userUrls = byUserId.get(removed.getUserId());
+            if (userUrls != null) {
+                userUrls.removeIf(url -> url.getShortCode().equals(shortCode));
+            }
+            return true;
+        }
+        return false;
+    }
 }

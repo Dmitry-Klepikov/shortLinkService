@@ -26,4 +26,20 @@ public class UrlShrinkApplicationService {
     public void listUserUrls(UUID userId) {
         domainService.printUserUrls(userId);
     }
+
+    public boolean updateUrlMaxClicks(UUID userId, String shortCode, int newMaxClicks) {
+        return domainService.updateUrlMaxClicks(userId, shortCode, newMaxClicks);
+    }
+
+    public boolean extendUrlLifetime(UUID userId, String shortCode, int additionalDays) {
+        return domainService.extendUrlLifetime(userId, shortCode, additionalDays);
+    }
+
+    public boolean deleteUrl(UUID userId, String shortCode) {
+        return domainService.deleteUrl(userId, shortCode);
+    }
+
+    public void printUserStats(UUID userId) {
+        domainService.printUserStats(userId);
+    }
 }
